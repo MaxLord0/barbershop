@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,18 +23,22 @@ const Navbar = () => {
     { name: 'Home', href: '#home' },
     { name: 'Servizi', href: '#servizi' },
     { name: 'Galleria', href: '#galleria' },
-    { name: 'Prezzi', href: '#prezzi' },
-    { name: 'Recensioni', href: '#recensioni' },
     { name: 'Contatti', href: '#contatti' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-4' : 'bg-transparent py-6'}`}>
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-6'}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex flex-col">
-            <a href="#home" className="font-heading text-2xl font-bold text-white tracking-wider">VANTO</a>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-gold">Barber Studio</span>
+          <div className="flex flex-col items-center">
+            <a href="#home" className="font-heading text-3xl text-gold tracking-widest text-shadow-vintage">
+              VANTO
+            </a>
           </div>
 
           {/* Desktop Menu */}
@@ -42,18 +47,18 @@ const Navbar = () => {
               <a 
                 key={link.name} 
                 href={link.href}
-                className="text-sm font-medium text-offwhite hover:text-gold transition-colors"
+                className="text-sm font-bold font-sans tracking-widest uppercase text-vintage-100 hover:text-gold transition-colors"
               >
                 {link.name}
               </a>
             ))}
             <a 
-              href="https://wa.me/393339876543?text=Ciao%2C%20vorrei%20prenotare%20un%20appuntamento%20da%20Vanto%20Barber%20Studio"
+              href="https://wa.me/393339876543"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gold hover:bg-gold-light text-charcoal px-6 py-2 font-bold text-sm uppercase tracking-wide transition-colors"
+              className="bg-gold hover:bg-gold-light text-vintage-900 px-6 py-2 font-bold text-xs uppercase tracking-widest transition-colors border border-gold"
             >
-              Prenota Ora
+              Prenota
             </a>
           </div>
 
@@ -61,7 +66,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-gold focus:outline-none"
+              className="text-vintage-100 hover:text-gold focus:outline-none"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -71,30 +76,30 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden glass-nav absolute w-full left-0 top-full border-t border-charcoal-light">
+        <div className="md:hidden glass-nav absolute w-full left-0 top-full border-t border-gold/20">
           <div className="px-4 pt-2 pb-6 space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-4 text-base font-medium text-white hover:text-gold hover:bg-charcoal-light transition-colors"
+                className="block px-3 py-4 text-center text-sm font-bold font-sans tracking-widest uppercase text-vintage-100 hover:text-gold hover:bg-vintage-800 transition-colors"
               >
                 {link.name}
               </a>
             ))}
             <a 
-              href="https://wa.me/393339876543?text=Ciao%2C%20vorrei%20prenotare%20un%20appuntamento%20da%20Vanto%20Barber%20Studio"
+              href="https://wa.me/393339876543"
               target="_blank"
               rel="noopener noreferrer"
-              className="block mt-4 w-full text-center bg-gold hover:bg-gold-light text-charcoal px-6 py-3 font-bold text-sm uppercase tracking-wide transition-colors"
+              className="block mt-4 w-full text-center bg-gold hover:bg-gold-light text-vintage-900 px-6 py-3 font-bold text-sm uppercase tracking-widest transition-colors"
             >
               Prenota Ora
             </a>
           </div>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 };
 

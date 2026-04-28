@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Gallery = () => {
   const images = [
@@ -29,29 +30,44 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="galleria" className="py-24 bg-charcoal">
+    <section id="galleria" className="py-24 bg-wood-dark border-t-8 border-b-8 border-black/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-bold tracking-[0.2em] text-gold uppercase mb-4">Galleria</h2>
-          <h3 className="text-4xl font-heading font-bold text-white">
-            Il nostro lavoro in immagini
-          </h3>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-block relative">
+            <h3 className="text-4xl md:text-5xl font-heading font-bold text-vintage-100 uppercase tracking-widest text-shadow-vintage">
+              Photos
+            </h3>
+            <div className="w-full flex items-center justify-center mt-2 space-x-2 text-gold">
+              <div className="h-px bg-gold flex-1"></div>
+              <span className="text-xs">◆</span>
+              <div className="h-px bg-gold flex-1"></div>
+            </div>
+          </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
           {images.map((img, index) => (
-            <div key={index} className="relative group overflow-hidden bg-charcoal-light aspect-[4/5]">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              key={index} 
+              className="relative group overflow-hidden bg-vintage-900 aspect-square border-2 border-vintage-800 shadow-xl"
+            >
               <img 
                 src={img.src} 
                 alt={img.alt} 
-                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                className="w-full h-full object-cover sepia-[.4] transition-all duration-700 group-hover:scale-110 group-hover:sepia-0"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-heading text-lg font-medium opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  {img.alt}
-                </span>
-              </div>
-            </div>
+              <div className="absolute inset-0 border-[8px] border-black/20 pointer-events-none mix-blend-overlay"></div>
+            </motion.div>
           ))}
         </div>
       </div>
