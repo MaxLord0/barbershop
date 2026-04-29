@@ -3,13 +3,14 @@ import { motion } from 'framer-motion';
 
 const CTA = () => {
   return (
-    <section className="relative py-32 bg-wood-dark overflow-hidden border-t-8 border-b-8 border-black/40">
+    <section className="relative py-32 bg-shaver-black overflow-hidden">
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-30 mix-blend-overlay"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-40 mix-blend-luminosity grayscale"
         style={{ 
           backgroundImage: 'url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
         }}
       ></div>
+      <div className="absolute inset-0 bg-noise-pattern opacity-30 mix-blend-overlay z-0"></div>
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <motion.div
@@ -18,21 +19,21 @@ const CTA = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-vintage-100 mb-6 uppercase tracking-widest text-shadow-vintage">
-            Pronto per un vero taglio?
+          <h2 className="text-4xl md:text-6xl font-heading font-bold text-shaver-white mb-6 uppercase tracking-widest text-shadow-shaver">
+            Ready for a real cut?
           </h2>
-          <div className="w-24 h-1 bg-gold mx-auto mb-8"></div>
-          <p className="text-xl text-vintage-100/90 mb-12 font-subheading italic max-w-2xl mx-auto leading-relaxed">
-            Un'esperienza classica, per gentiluomini moderni. Prenota il tuo appuntamento e affidati ai nostri barbieri esperti.
+          <div className="w-24 h-1 bg-shaver-gold mx-auto mb-8"></div>
+          <p className="text-xl text-shaver-lightgray mb-12 font-subheading italic max-w-2xl mx-auto leading-relaxed">
+            A classic experience, for modern gentlemen. Book your appointment and trust our expert barbers.
           </p>
           
           <a 
             href="https://wa.me/393339876543"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-gold hover:bg-gold-light text-vintage-900 px-12 py-5 font-bold text-sm uppercase tracking-widest transition-colors border-2 border-gold shadow-xl"
+            className="btn-shaver"
           >
-            Prenota su WhatsApp
+            Book via WhatsApp
           </a>
         </motion.div>
       </div>

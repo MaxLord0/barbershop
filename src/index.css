@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Rye&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600&family=Oswald:wght@300;400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,30 +9,30 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-vintage-900 text-vintage-100 font-sans antialiased;
+    @apply bg-shaver-black text-shaver-white font-sans antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-wider;
+    @apply font-heading uppercase;
   }
 }
 
 @layer utilities {
-  .text-shadow-vintage {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  .text-shadow-shaver {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
   }
-  .glass-nav {
-    @apply bg-wood/95 backdrop-blur-md border-b border-gold/20 shadow-lg shadow-black/50;
+  .glass-nav-shaver {
+    @apply bg-shaver-black/95 backdrop-blur-md border-b border-shaver-gray shadow-lg shadow-black/80;
   }
-  .torn-edge-top {
-    mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="black"/></svg>');
-    mask-size: 100% 100%;
-    mask-repeat: no-repeat;
+  .bg-grunge-dark {
+    @apply bg-shaver-black bg-grunge-pattern bg-repeat;
   }
-  .bg-wood-dark {
-    @apply bg-vintage-900 bg-wood-pattern bg-cover bg-fixed;
+  .bg-grunge-light {
+    @apply bg-shaver-white bg-noise-pattern bg-repeat text-shaver-black;
   }
-  .bg-paper-light {
-    @apply bg-vintage-100 bg-paper-pattern text-vintage-900;
+  .bg-grunge-gray {
+    @apply bg-shaver-gray bg-grunge-pattern bg-repeat text-shaver-white;
+  }
+  .btn-shaver {
+    @apply inline-block px-8 py-4 font-heading font-bold text-sm tracking-[0.2em] uppercase transition-all duration-300 border-2 border-shaver-gold text-shaver-gold hover:bg-shaver-gold hover:text-shaver-black;
   }
 }
-

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
 const Testimonials = () => {
   const reviews = [
@@ -19,47 +19,41 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="recensioni" className="py-24 bg-wood-dark border-t-8 border-b-8 border-black/40">
+    <section id="recensioni" className="py-32 bg-grunge-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 relative"
+          className="text-center mb-20"
         >
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Mustache_icon.svg/1024px-Mustache_icon.svg.png" className="w-12 h-auto mx-auto mb-4 invert opacity-50" alt="Mustache" />
-          <h3 className="text-4xl md:text-5xl font-heading font-bold text-vintage-100 uppercase tracking-widest text-shadow-vintage">
-            Recensioni
+          <h2 className="text-sm font-bold tracking-[0.3em] text-shaver-gold uppercase mb-4 font-sans">
+            Testimonials
+          </h2>
+          <h3 className="text-5xl md:text-6xl font-heading font-bold text-shaver-black uppercase">
+            What They Say
           </h3>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {reviews.map((review, index) => (
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               key={index} 
-              className="bg-paper-light p-8 border border-vintage-800 relative shadow-2xl"
+              className="text-center group"
             >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold w-10 h-10 flex items-center justify-center rounded-full border-2 border-vintage-900">
-                <span className="text-vintage-900 font-heading font-bold">"</span>
-              </div>
-              <div className="flex justify-center text-gold mb-6 mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill="currentColor" />
-                ))}
-              </div>
-              <p className="text-vintage-900 font-sans italic mb-6 leading-relaxed text-center text-sm">
+              <Quote className="text-shaver-gold mx-auto mb-6 opacity-30" size={48} strokeWidth={1} />
+              <p className="text-shaver-gray font-subheading italic text-lg leading-relaxed mb-8 px-4">
                 "{review.text}"
               </p>
-              <div className="mt-auto text-center">
-                <span className="font-heading font-bold text-vintage-900 tracking-wider">
-                  - {review.author}
-                </span>
-              </div>
+              <div className="w-12 h-px bg-shaver-black mx-auto mb-6"></div>
+              <h4 className="text-xl font-heading font-bold text-shaver-black uppercase tracking-widest">
+                {review.author}
+              </h4>
             </motion.div>
           ))}
         </div>

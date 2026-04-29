@@ -14,22 +14,24 @@ import TornPaper from './components/TornPaper';
 
 function App() {
   return (
-    <div className="font-sans text-vintage-100 bg-wood-dark min-h-screen selection:bg-gold selection:text-vintage-900">
+    <div className="font-sans text-shaver-white bg-shaver-black min-h-screen selection:bg-shaver-gold selection:text-shaver-black">
       <Navbar />
       <main>
         <Hero />
-        <TornPaper position="bottom" color="bg-vintage-100" />
+        <TornPaper position="bottom" theme="light" />
         <About />
+        <TornPaper position="bottom" theme="dark" />
         <Services />
-        <TornPaper position="top" color="bg-vintage-100" />
+        <TornPaper position="bottom" theme="dark" />
         <CTA />
         <Gallery />
+        <TornPaper position="bottom" theme="light" />
         <Pricing />
-        <TornPaper position="bottom" color="bg-vintage-100" />
+        <TornPaper position="bottom" theme="dark" />
         <WhyChooseUs />
-        <TornPaper position="top" color="bg-vintage-100" />
+        <TornPaper position="bottom" theme="light" />
         <Testimonials />
-        <TornPaper position="bottom" color="bg-vintage-100" />
+        <TornPaper position="bottom" theme="dark" />
         <Contact />
       </main>
       <Footer />

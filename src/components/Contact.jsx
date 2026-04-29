@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone, Mail } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,80 +25,71 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const contactInfo = [
+    {
+      icon: <MapPin className="text-shaver-gold mb-4" size={32} strokeWidth={1} />,
+      title: "Address",
+      content: "Via Roma 123, 00100 Roma (RM)"
+    },
+    {
+      icon: <Phone className="text-shaver-gold mb-4" size={32} strokeWidth={1} />,
+      title: "Phone",
+      content: "+39 333 987 6543"
+    },
+    {
+      icon: <Clock className="text-shaver-gold mb-4" size={32} strokeWidth={1} />,
+      title: "Hours",
+      content: "Mar-Sab: 09:00 - 19:30\nDom-Lun: Chiuso"
+    }
+  ];
+
   return (
-    <section id="contatti" className="py-24 bg-paper-light">
+    <section id="contatti" className="py-32 bg-grunge-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 relative"
+          className="text-center mb-20"
         >
-          <div className="absolute top-1/2 left-0 right-0 h-px bg-vintage-900/20 -z-10"></div>
-          <span className="bg-vintage-100 px-6 inline-block">
-            <h3 className="text-4xl md:text-5xl font-heading font-bold text-vintage-900 uppercase tracking-widest">
-              Contatti
-            </h3>
-          </span>
+          <h2 className="text-sm font-bold tracking-[0.3em] text-shaver-gold uppercase mb-4 font-sans">
+            Get In Touch
+          </h2>
+          <h3 className="text-5xl md:text-6xl font-heading font-bold text-shaver-white uppercase">
+            Contact Us
+          </h3>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Info */}
+          {/* Contact Info & Map */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="space-y-10"
+            className="space-y-12"
           >
-            <div>
-              <h4 className="text-2xl font-heading font-bold text-vintage-900 mb-6 uppercase tracking-wider">Informazioni</h4>
-              <p className="text-vintage-800 font-sans text-sm italic mb-8">
-                Vieni a trovarci o contattaci per prenotare il tuo appuntamento. Il nostro team è pronto ad accoglierti nell'atmosfera di un tempo.
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              {contactInfo.map((info, index) => (
+                <div key={index} className="text-center sm:text-left flex flex-col items-center sm:items-start group">
+                  {info.icon}
+                  <h4 className="text-xl font-heading font-bold text-shaver-white uppercase mb-2 group-hover:text-shaver-gold transition-colors">{info.title}</h4>
+                  <p className="text-shaver-lightgray font-sans whitespace-pre-line text-sm">{info.content}</p>
+                </div>
+              ))}
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <MapPin className="text-gold mr-4 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h5 className="font-bold text-vintage-900 font-heading tracking-wide mb-1">Indirizzo</h5>
-                  <p className="text-vintage-800 font-sans text-sm">Via Garibaldi 18, Cagliari, Italia</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Clock className="text-gold mr-4 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h5 className="font-bold text-vintage-900 font-heading tracking-wide mb-1">Orari</h5>
-                  <p className="text-vintage-800 font-sans text-sm">Martedì - Domenica: 09:00 - 20:00<br />Lunedì: Chiuso</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Phone className="text-gold mr-4 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h5 className="font-bold text-vintage-900 font-heading tracking-wide mb-1">Telefono</h5>
-                  <p className="text-vintage-800 font-sans text-sm">+39 333 987 6543</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Mail className="text-gold mr-4 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h5 className="font-bold text-vintage-900 font-heading tracking-wide mb-1">Email</h5>
-                  <p className="text-vintage-800 font-sans text-sm">info@vantobarber.it</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6">
-              <a 
-                href="https://wa.me/393339876543"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full bg-vintage-900 hover:bg-gold text-vintage-100 hover:text-vintage-900 px-8 py-4 font-bold text-sm uppercase tracking-widest transition-colors border-2 border-vintage-900 hover:border-gold"
-              >
-                Contattaci su WhatsApp
-              </a>
+            <div className="h-64 sm:h-80 w-full relative grayscale contrast-125 border-4 border-shaver-gray">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d11870.364219460027!2d12.482778!3d41.890251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6053278340d5%3A0xf676f1e1cc0be0e0!2sColosseo!5e0!3m2!1sit!2sit!4v1650000000000!5m2!1sit!2sit" 
+                className="absolute inset-0 w-full h-full"
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mappa"
+              ></iframe>
             </div>
           </motion.div>
 
@@ -108,78 +99,85 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-wood-dark p-8 md:p-10 border-4 border-vintage-900/50 shadow-xl relative"
+            className="bg-shaver-black border border-shaver-gray p-8 sm:p-12"
           >
-            <div className="absolute inset-2 border border-gold/30 pointer-events-none"></div>
-            <h4 className="text-2xl font-heading font-bold text-vintage-100 mb-6 uppercase tracking-wider relative z-10 text-center">Richiedi Appuntamento</h4>
+            <h4 className="text-3xl font-heading font-bold text-shaver-white uppercase mb-8">Book an Appointment</h4>
             
             {submitted ? (
-              <div className="bg-green-900/30 border border-green-500/50 p-4 text-green-400 text-center font-sans font-medium relative z-10">
+              <div className="bg-shaver-gold/20 border border-shaver-gold p-4 text-shaver-gold text-center font-sans font-medium relative z-10">
                 Richiesta inviata con successo. Ti contatteremo presto per confermare.
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                <div>
-                  <input 
-                    type="text" 
-                    name="nome"
-                    required
-                    value={formData.nome}
-                    onChange={handleChange}
-                    placeholder="Nome e Cognome" 
-                    className="w-full bg-transparent border-b-2 border-vintage-100/30 text-vintage-100 px-0 py-2 focus:outline-none focus:border-gold transition-colors font-sans text-sm placeholder:text-vintage-100/50"
-                  />
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <input 
+                      type="text" 
+                      name="nome"
+                      value={formData.nome}
+                      onChange={handleChange}
+                      placeholder="Il tuo nome *" 
+                      required
+                      className="w-full bg-transparent border-b-2 border-shaver-gray py-3 px-2 text-shaver-white focus:outline-none focus:border-shaver-gold transition-colors font-sans"
+                    />
+                  </div>
+                  <div>
+                    <input 
+                      type="email" 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Email *" 
+                      required
+                      className="w-full bg-transparent border-b-2 border-shaver-gray py-3 px-2 text-shaver-white focus:outline-none focus:border-shaver-gold transition-colors font-sans"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <input 
-                    type="email" 
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email" 
-                    className="w-full bg-transparent border-b-2 border-vintage-100/30 text-vintage-100 px-0 py-2 focus:outline-none focus:border-gold transition-colors font-sans text-sm placeholder:text-vintage-100/50"
-                  />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <select 
+                      name="servizio"
+                      value={formData.servizio}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-transparent border-b-2 border-shaver-gray py-3 px-2 text-shaver-white focus:outline-none focus:border-shaver-gold transition-colors font-sans appearance-none"
+                    >
+                      <option value="" className="bg-shaver-black">Seleziona Servizio *</option>
+                      <option value="taglio" className="bg-shaver-black">Taglio Uomo</option>
+                      <option value="barba" className="bg-shaver-black">Barba Premium</option>
+                      <option value="completo" className="bg-shaver-black">Taglio + Barba</option>
+                      <option value="altro" className="bg-shaver-black">Altro</option>
+                    </select>
+                  </div>
+                  <div>
+                    <input 
+                      type="date" 
+                      name="data"
+                      value={formData.data}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-transparent border-b-2 border-shaver-gray py-3 px-2 text-shaver-white focus:outline-none focus:border-shaver-gold transition-colors font-sans [&::-webkit-calendar-picker-indicator]:invert-[1]"
+                    />
+                  </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <select 
-                    name="servizio"
-                    required
-                    value={formData.servizio}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b-2 border-vintage-100/30 text-vintage-100 px-0 py-2 focus:outline-none focus:border-gold transition-colors font-sans text-sm appearance-none [&>option]:text-vintage-900"
-                  >
-                    <option value="" disabled className="text-vintage-900">Seleziona Servizio</option>
-                    <option value="taglio">Taglio Uomo</option>
-                    <option value="fade">Fade / Sfumatura</option>
-                    <option value="barba">Barba Premium</option>
-                    <option value="completo">Taglio + Barba</option>
-                    <option value="deluxe">Grooming Deluxe</option>
-                  </select>
-                  <input 
-                    type="date" 
-                    name="data"
-                    required
-                    value={formData.data}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b-2 border-vintage-100/30 text-vintage-100 px-0 py-2 focus:outline-none focus:border-gold transition-colors font-sans text-sm [&::-webkit-calendar-picker-indicator]:invert-[.8]"
-                  />
-                </div>
+
                 <div>
                   <textarea 
                     name="messaggio"
-                    rows="3"
                     value={formData.messaggio}
                     onChange={handleChange}
-                    placeholder="Messaggio opzionale..." 
-                    className="w-full bg-transparent border-b-2 border-vintage-100/30 text-vintage-100 px-0 py-2 focus:outline-none focus:border-gold transition-colors font-sans text-sm placeholder:text-vintage-100/50 resize-none"
+                    placeholder="Note aggiuntive" 
+                    rows="4"
+                    className="w-full bg-transparent border-b-2 border-shaver-gray py-3 px-2 text-shaver-white focus:outline-none focus:border-shaver-gold transition-colors font-sans resize-none"
                   ></textarea>
                 </div>
+
                 <button 
-                  type="submit"
-                  className="w-full bg-gold hover:bg-gold-light text-vintage-900 px-8 py-4 font-bold text-sm uppercase tracking-widest transition-colors border-2 border-gold"
+                  type="submit" 
+                  className="btn-shaver w-full mt-4"
                 >
-                  Richiedi Appuntamento
+                  Send Request
                 </button>
               </form>
             )}
